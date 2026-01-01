@@ -73,21 +73,27 @@ window.onload = function () {
         row.innerHTML = `
             <td>${student.rollNo}</td>
             <td>${student.name}</td>
-            <td class="checkbox-column"><input type="checkbox" class="present-checkbox"></td>
-            <td class="checkbox-column"><input type="checkbox" class="absent-checkbox"></td>
+            <td class="attendance-column"><label><input type="radio" name="attendance-${student.rollNo}" value="present" class="present-radio"> Present</label></td>
+            <td class="attendance-column"><label><input type="radio" name="attendance-${student.rollNo}" value="absent" class="absent-radio"> Absent</label></td>
         `;
         table.appendChild(row);
 
-        // Keep Present and Absent mutually exclusive for each row
-        const presentCb = row.querySelector('.present-checkbox');
-        const absentCb = row.querySelector('.absent-checkbox');
+        // Add handlers to toggle row classes for styling when a radio is selected
+        const presentRb = row.querySelector('.present-radio');
+        const absentRb = row.querySelector('.absent-radio');
 
-        presentCb.addEventListener('change', () => {
-            if (presentCb.checked) absentCb.checked = false;
+        presentRb.addEventListener('change', () => {
+            if (presentRb.checked) {
+                row.classList.add('present');
+                row.classList.remove('absent');
+            }
         });
 
-        absentCb.addEventListener('change', () => {
-            if (absentCb.checked) presentCb.checked = false;
+        absentRb.addEventListener('change', () => {
+            if (absentRb.checked) {
+                row.classList.add('absent');
+                row.classList.remove('present');
+            }
         });
     });
 };
