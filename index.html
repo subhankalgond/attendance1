@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <title>Student Attendance</title>
+   <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="date-selection">
+            <button class="pdf-button" onclick="generatePDF()">Generate PDF</button>
+            <input type="date" id="datePicker" onchange="handleDateChange(event)">
+            <div class="dateselector">
+                <p id="formattedDateDisplay"></p>
+            </div>
+        </div>
+            <h2>Student Attendance Record</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll No</th>
+                        <th>Student Name</th>
+                        <th class="checkbox-column">Present</th>
+                        <th class="checkbox-column">Absent</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTable">
+                    <!-- Student data will be inserted here -->
+                </tbody>
+            </table>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="script.js"></script>
+       
+</body>
+
+</html>
