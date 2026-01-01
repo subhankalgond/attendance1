@@ -73,10 +73,22 @@ window.onload = function () {
         row.innerHTML = `
             <td>${student.rollNo}</td>
             <td>${student.name}</td>
-            <td class="checkbox-column"><input type="checkbox"></td>
-            <td class="checkbox-column"><input type="checkbox"></td>
+            <td class="checkbox-column"><input type="checkbox" class="present-checkbox"></td>
+            <td class="checkbox-column"><input type="checkbox" class="absent-checkbox"></td>
         `;
         table.appendChild(row);
+
+        // Keep Present and Absent mutually exclusive for each row
+        const presentCb = row.querySelector('.present-checkbox');
+        const absentCb = row.querySelector('.absent-checkbox');
+
+        presentCb.addEventListener('change', () => {
+            if (presentCb.checked) absentCb.checked = false;
+        });
+
+        absentCb.addEventListener('change', () => {
+            if (absentCb.checked) presentCb.checked = false;
+        });
     });
 };
 
