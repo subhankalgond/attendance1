@@ -1,8 +1,14 @@
 /* styles.css */
 /* Base Mobile-First Styles */
+/* Make box-sizing consistent for predictable sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 2vw;
+    min-width: 0;
     background-color: #f4f6f8; /* subtle professional background */
     color: #102a43; /* dark slate text for better contrast */
     font-size: 1rem;
@@ -158,5 +164,57 @@ input[type="checkbox"] {
     body {
         background-color: white !important;
         margin: 0 !important;
+    }
+}
+
+/* Small-screen adjustments to make layout fit mobile neatly */
+@media only screen and (max-width: 479px) {
+    body {
+        margin: 10px;
+        font-size: 0.95rem;
+    }
+
+    .container {
+        padding: 12px;
+    }
+
+    .date-selection {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .pdf-button {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 1rem;
+    }
+
+    #datePicker {
+        width: 100%;
+        padding: 8px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 0.9rem;
+        min-width: 0;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .checkbox-column {
+        width: 70px;
+        max-width: 70px;
+        text-align: center;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        transform: scale(1.2);
     }
 }
